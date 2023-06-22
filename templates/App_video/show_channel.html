@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filter %}
+
+
+{% block title %}
+{{channel.channel_name}}
+{% endblock title %}
+
+
+{% block body_block %}
+
+<div class="left_side">
+    <p><a href="{% url 'App_video:home' %}"><img src="{% static 'images/home.png'%}" alt=""></a> <a
+            href="{% url 'App_video:home' %}" class="active">Home</a></p>
+    <p><img src="{% static 'images/explore.png'%}" alt=""> <a href="" class="active">Explore</a></p>
+    <p><img src="{% static 'images/subscriprion.png'%}" alt=""> <a href="" class="active">Subcription</a></p>
+    <p><img src="{% static 'images/library.png'%}" alt=""> <a href="" class="active">Libary</a></p>
+    <p><img src="{% static 'images/history.png'%}" alt=""> <a href="" class="active">History</a></p>
+    <p><img src="{% static 'images/cast.png'%}" alt=""> <a href="" class="active">Cast Videos</a></p>
+    <p><img src="{% static 'images/playlist.png'%}" alt=""> <a href="" class="active">Playlist</a></p>
+    <p><img src="{% static 'images/messages.png'%}" alt=""> <a href="" class="active">Message</a></p>
+    <p><img src="{% static 'images/show-more.png'%}" alt=""> <a href="" class="active">Show More</a></p>
+    <hr>
+    <div class="active">
+
+        <p>Subscribed</p>
+        <p><img src="{% static '/images/cameron.png' %}" alt="" class="user_icon"><a href="" class="active">Cameroon</a>
+        </p>
+    </div>
+
+
+</div>
+
+<div class="right_side">
+    <div class="right">
+
+        <div class="channel-info">
+            <img src="{{channel.channel_logo.url}}" alt="">
+            <div class="channel-user-info">
+                <h3>{{channel.channel_name}}
+
+                    {% if already_subscribe %}
+                    <a href="{% url 'App_activity:unsubscribe_user' pk=channel.pk%}" class="btn btn-success">UnSubscribe</a>
+                    {% else %}
+                    <a href="{% url 'App_activity:subscribe_user' pk=channel.pk%}" class="btn btn-danger">Subscribe</a>
+
+                    {% endif %}
+
+                </h3>
+                <p><b>@ {{channel.user.email|slice:":-10"}}</b> <span>{{channel.channel_video.count}}
+                        video</span><small> {{view}}
+                        views</small><small> {{channel.subscribed_channel.count}} subscriber</small></p>
+
+            </div>
+        </div>
+
+    </div>
+    <hr>
+
+
+    <h4>Videos</h4>
+
+
+    <div style="display: flex;">
+        {% for video in channel_videos %}
+
+
+
+
+        <div class="user-video-thamnail">
+            <a href="{% url 'App_video:video_details' pk=video.pk %}"><img src="{{video.thumbnail.url}}" alt=""
+                    width="400px" height="250px" style="border-radius: 10px;"></a>
+            <div class="user-video-title">
+                <a href="{% url 'App_video:video_details' pk=video.pk %}">
+                    <h5>{{video.title|filter}}</h5>
+                </a>
+                <small>{{video.video_view.count}} views {{video.published_at|date:"SHORT_DATE_FORMAT"}}</small><br>
+
+
+
+
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock body_block %}

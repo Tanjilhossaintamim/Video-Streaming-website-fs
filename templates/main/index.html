@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video-Straming Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+
+<body>
+    <section id="header">
+        <nav>
+            <div class="logo">
+                <img src="{% static 'images/menu.png'%}" alt="" class="menubar">
+                <img src="{% static 'images/logo.png' %}" class="main-logo">
+            </div>
+            <div class="search_box">
+                <form class="search_input" id="search-form">
+
+                    <input type="text" placeholder="search">
+                    <button type="submit"><img src="{% static 'images/search.png' %}" alt=""></button>
+
+                </form>
+                <img src="{% static 'images/voice-search.png'%}" class="mic-logo">
+            </div>
+            <div class="profile_icon">
+                <img src="{% static 'images/upload.png'%}" alt="">
+                <img src="{% static 'images/more.png'%}" alt="">
+                <img src="{% static 'images/notification.png'%}" alt="">
+                <img src="{% static 'images/Jack.png'%}" alt="">
+            </div>
+        </nav>
+    </section>
+
+    <section id="main" class="section-padding">
+        <div class="left_side">
+            <p><img src="{% static 'images/home.png'%}" alt=""> <a href="" class="active">Home</a></p>
+            <p><img src="{% static 'images/explore.png'%}" alt=""> <a href="" class="active">Explore</a></p>
+            <p><img src="{% static 'images/subscriprion.png'%}" alt=""> <a href="" class="active">Subcription</a></p>
+            <p><img src="{% static 'images/library.png'%}" alt=""> <a href="" class="active">Libary</a></p>
+            <p><img src="{% static 'images/history.png'%}" alt=""> <a href="" class="active">History</a></p>
+            <p><img src="{% static 'images/cast.png'%}" alt=""> <a href="" class="active">Cast Videos</a></p>
+            <p><img src="{% static 'images/playlist.png'%}" alt=""> <a href="" class="active">Playlist</a></p>
+            <p><img src="{% static 'images/messages.png'%}" alt=""> <a href="" class="active">Message</a></p>
+            <p><img src="{% static 'images/show-more.png'%}" alt=""> <a href="" class="active">Show More</a></p>
+            <hr>
+            <p>Subscribed</p>
+            <p><img src="{% static '/images/cameron.png' %}" alt="" class="user_icon"><a href="" class="active">Cameroon</a></p>
+
+
+        </div>
+        <div class="right_side">
+            <div class="video-container">
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail1.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail2.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail3.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail4.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail5.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail6.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail7.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video">
+                    <a href=""><img src="./images/thumbnail8.png" alt="" class="thambnail"></a>
+                    <div class="video-des">
+                        <img src="./images/Jack.png" alt="">
+                        <div class="name">
+                            <a href="">
+                                <p>how to make travel Blog</p>
+                            </a>
+                            <p>channel name</p>
+                            <small>15k views . 2days ago</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

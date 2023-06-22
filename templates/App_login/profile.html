@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+
+{% block body_block %}
+
+<div class="left_side">
+    <p><a href="{% url 'App_video:home' %}"><img src="{% static 'images/home.png'%}" alt=""></a> <a href="{% url 'App_video:home' %}" class="active">Home</a></p>
+    <p><img src="{% static 'images/explore.png'%}" alt=""> <a href="" class="active">Explore</a></p>
+    <p><img src="{% static 'images/subscriprion.png'%}" alt=""> <a href="" class="active">Subcription</a></p>
+    <p><img src="{% static 'images/library.png'%}" alt=""> <a href="" class="active">Libary</a></p>
+    <p><img src="{% static 'images/history.png'%}" alt=""> <a href="" class="active">History</a></p>
+    <p><img src="{% static 'images/cast.png'%}" alt=""> <a href="" class="active">Cast Videos</a></p>
+    <p><img src="{% static 'images/playlist.png'%}" alt=""> <a href="" class="active">Playlist</a></p>
+    <p><img src="{% static 'images/messages.png'%}" alt=""> <a href="" class="active">Message</a></p>
+    <p><img src="{% static 'images/show-more.png'%}" alt=""> <a href="" class="active">Show More</a></p>
+    <hr>
+    <div class="active">
+
+        <p>Subscribed</p>
+        <p><img src="{% static '/images/cameron.png' %}" alt="" class="user_icon"><a href="" class="active">Cameroon</a>
+        </p>
+    </div>
+
+
+</div>
+<div class="right_side">
+    {% if current_user.cover_photo %}
+    <img src="{{current_user.cover_photo.url}}" alt="" height="300px" width="100%" style="object-fit: cover; z-index:0">
+    {% else %}
+    <img src="/media/cover_photo/cover.jpg" alt="" height="300px" width="100%" style="object-fit: cover; z-index:0">
+    {% endif %}
+    <br>
+    <div class="profile-user-div">
+
+
+
+        {% if current_user.profile_pic %}
+
+        <img src="{{current_user.profile_pic.url}}">
+        {% else %}
+        <img src="/media/profile_pic/avater.jpg">
+        {% endif %}
+
+
+        <div>
+
+            <h3>{{current_user.full_name}}</h3>
+            <h4>@{{current_user.username}}</h4>
+            <a href="{%url 'App_login:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+
+            <a href="{% url 'App_login:change_password' %}" class="btn btn-warning">Change Password</a>
+
+        </div>
+    </div>
+    <hr>
+</div>
+
+{% endblock body_block %}
