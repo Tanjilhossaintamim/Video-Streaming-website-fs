@@ -24,37 +24,45 @@ class AllVideos(ListView):
 
 
 def video_details(request, pk):
-    video = Video.objects.get(pk=pk)
+    video = Video.objects.filter(pk=pk)
     all_videos = Video.objects.filter(public_view=True)
-    total_comment = Comment.objects.filter(video=video).count()
-    video_comment_list = Comment.objects.filter(video=video)
+    try:
+        if video.exists():
 
-    if request.user.is_authenticated:
-        already_liked = Like.objects.filter(user=request.user, video=video)
-        already_subscribe = Subscribe.objects.filter(
-            subsciber=request.user, channel=video.channel.pk)
-    else:
-        already_subscribe = False
-        already_liked = False
-    if request.user.is_authenticated:
-        Views.objects.get_or_create(viewer=request.user, video=video)
+            video = video[0]
+            total_comment = Comment.objects.filter(video=video).count()
+            video_comment_list = Comment.objects.filter(video=video)
 
-    ######## comment form ######
-    form = CommentForm()
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
             if request.user.is_authenticated:
-                comment = form.save(commit=False)
-                comment.user = request.user
-                comment.video = video
-                comment.save()
-                return HttpResponseRedirect(reverse('App_video:video_details', kwargs={'pk': video.pk}))
+                already_liked = Like.objects.filter(
+                    user=request.user, video=video)
+                already_subscribe = Subscribe.objects.filter(
+                    subsciber=request.user, channel=video.channel.pk)
             else:
-                messages.warning(request, 'You are not Logged in !')
-                return HttpResponseRedirect(reverse('App_login:login'))
+                already_subscribe = False
+                already_liked = False
+            if request.user.is_authenticated:
+                Views.objects.get_or_create(viewer=request.user, video=video)
 
-    return render(request, 'App_video/video_details.html', context={'video': video, 'all_videos': all_videos, 'form': form, 'total_comment': total_comment, 'video_comment_list': video_comment_list, 'already_subscribe': already_subscribe, 'already_liked': already_liked})
+            ######## comment form ######
+            form = CommentForm()
+            if request.method == 'POST':
+                form = CommentForm(request.POST)
+                if form.is_valid():
+                    if request.user.is_authenticated:
+                        comment = form.save(commit=False)
+                        comment.user = request.user
+                        comment.video = video
+                        comment.save()
+                        return HttpResponseRedirect(reverse('App_video:video_details', kwargs={'pk': video.pk}))
+                    else:
+                        messages.warning(request, 'You are not Logged in !')
+                        return HttpResponseRedirect(reverse('App_login:login'))
+
+        return render(request, 'App_video/video_details.html', context={'video': video, 'all_videos': all_videos, 'form': form, 'total_comment': total_comment, 'video_comment_list': video_comment_list, 'already_subscribe': already_subscribe, 'already_liked': already_liked})
+    except:
+        messages.warning(request, 'No Video Found !')
+        return HttpResponseRedirect(reverse('App_video:home'))
 
 
 @login_required
