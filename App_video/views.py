@@ -86,7 +86,7 @@ def create_channel(request):
                     channel.save()
                     messages.success(
                         request, 'You Create A Channel Successfully !')
-                    return HttpResponseRedirect(reverse('App_login:channel'))
+                    return HttpResponseRedirect(reverse('App_video:channel'))
         else:
             messages.warning(request, 'Please Filled Profile Information !')
 
